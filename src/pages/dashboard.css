@@ -1,0 +1,110 @@
+.dashboard {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fff;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 800px;
+    height: 480px;
+    background: #f7f7f7;
+    /* color:#000; */
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.main {
+    display: flex;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 60%;
+    height: 30%;
+    background: #fff;
+    border: none;
+    outline: none;
+
+    border-radius: 10px;
+    font-size: 16px;
+    /* color:#000000; */
+    padding: 20px 45px 20px 20px;
+
+}
+
+.wrapper .input-box i {
+    position: absolute;
+    color: #000000;
+    right: 140px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .btn {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 35px;
+    background-color: #F8492D;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper .btn i {
+
+    margin-right: 15px;
+
+
+}
+
+.user-image img {
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: -90px;
+}
+
+.Main-text h1 {
+    color: #000;
+    margin-top: 50px;
+    padding-left: 35px;
+}
+
+.second-main {
+    display: flex;
+    justify-content: space-around;
+    width: auto;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.second-main .green img {
+    width: 10px;
+    height: 10px;
+}
+
+.current-client {
+    font-size: 14px;
+}

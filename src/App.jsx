@@ -1,10 +1,12 @@
 import './App.css'
+import DeletePopup from './components/DeletePopup'
+import AddClient from './pages/AddClient'
 
 function App() {
 
   return (
     <>
-      <h1>Hello</h1>
+      <DeletePopup />
     </>
   )
 }
