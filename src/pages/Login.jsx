@@ -3,39 +3,39 @@ import './login.css'
 
 function Login() {
     return (
-        <div class='login-container'>
-            <div class="login">
-                <div class="top">
-                    <div class="logo">
+        <div className='login-container'>
+            <div className="login">
+                <div className="top">
+                    <div className="logo">
                         <img src="/src/assets/logo.png" alt="" />
                     </div>
-                    <div class="name">
+                    <div className="name">
                         <p>loansondemand.io</p>
                     </div>
 
                 </div>
 
-                <div class="wrapper">
+                <div className="wrapper">
                     <form action="">
                         <h1>Login</h1>
-                        <div class="input-box">
+                        <div className="input-box">
                             <input type="text" placeholder="Username" required />
-                            <i class='bx bxs-user'></i>
+                            <i className='bx bxs-user'></i>
                         </div>
 
-                        <div class="input-box">
+                        <div className="input-box">
                             <input type="password" placeholder="Password" required />
-                            <i class='bx bxs-lock-alt'></i>
+                            <i className='bx bxs-lock-alt'></i>
                         </div>
 
-                        <div class="remember-forgot">
+                        <div className="remember-forgot">
                             <label><input type="checkbox" />Remember me</label>
                             <a href="#">Forgot password?</a>
                         </div>
 
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
 
-                        <div class="register-link">
+                        <div className="register-link">
                             <p>Don't have an account? <a href="#">Register</a></p>
                         </div>
                     </form>

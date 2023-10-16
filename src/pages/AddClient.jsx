@@ -3,40 +3,40 @@ import './addclient.css'
 
 function AddClient() {
     return (
-        <div class='add-details'>
-            <div class="top">
-                <div class="main-text">
+        <div className='add-details'>
+            <div className="top">
+                <div className="main-text">
                     <h1>Add</h1>
                 </div>
-                <div class="user-image">
+                <div className="user-image">
                     <img src="/src/assets/userimage.png" alt="" />
                 </div>
             </div>
-            <div class="wrapper">
-                <div class="main">
-                    <div class="input-box-first">
+            <div className="wrapper">
+                <div className="main">
+                    <div className="input-box-first">
                         <p>Client Company Name</p>
                         <input type="text" placeholder="" required />
                     </div>
-                    <div class="input-box-second">
-                        <div class="location-id">
+                    <div className="input-box-second">
+                        <div className="location-id">
                             <p>Location ID</p>
                             <input type="text" placeholder="" required />
                         </div>
-                        <div class="API-key">
+                        <div className="API-key">
                             <p>API Key</p>
                             <input type="text" placeholder="" required />
                         </div>
                     </div>
 
-                    <div class="input-box-third">
-                        <div class="calendar">
+                    <div className="input-box-third">
+                        <div className="calendar">
                             <p>Calendar Link</p>
                             <input type="text" placeholder="" required />
                         </div>
                     </div>
-                    <button type="submit" class="btn">Cancel</button>
-                    <button type="submit" class="black-btn">Add</button>
+                    <button type="submit" className="btn">Cancel</button>
+                    <button type="submit" className="black-btn">Add</button>
                 </div>
             </div>
         </div>
