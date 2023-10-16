@@ -3,7 +3,7 @@ import './deletepopup.css'
 
 function DeletePopup() {
     return (
-        <div>
+        <div class='pop-up'>
             <div class="main">
                 <div class="wrapper">
                     <h1>Delete this Client?</h1>

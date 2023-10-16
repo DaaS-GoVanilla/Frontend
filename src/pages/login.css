@@ -5,24 +5,24 @@
     min-height: 100vh;
 }
 
-.top {
+.login-container .top {
     display: flex;
     justify-content: center;
 }
 
-.logo img {
+.login-container .logo img {
     width: 45px;
     margin-right: 15px;
 }
 
-.name {
+.login-container .name {
     color: #fff;
     font-size: 24px;
     font-weight: 400;
     margin: auto 5px;
 }
 
-.wrapper {
+.login-container .wrapper {
     width: 420px;
     background: #fff;
     color: #000;
@@ -30,12 +30,12 @@
     padding: 30px 40px;
 }
 
-.wrapper h1 {
+.login-container .wrapper h1 {
     font-size: 36px;
     text-align: center;
 }
 
-.wrapper .input-box {
+.login-container .wrapper .input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -43,7 +43,7 @@
     margin: 30px 0;
 }
 
-.input-box input {
+.login-container .input-box input {
     width: 100%;
     height: 100%;
     background: #F7F7F7;
@@ -57,7 +57,7 @@
 
 }
 
-.input-box i {
+.login-container .input-box i {
     position: absolute;
     color: #000000;
     right: 20px;
@@ -66,14 +66,14 @@
     font-size: 20px;
 }
 
-.remember-forgot {
+.login-container .remember-forgot {
     display: flex;
     justify-content: space-between;
     margin: -15px 0px 15px;
 
 }
 
-.remember-forgot label input {
+.login-container .remember-forgot label input {
     accent-color: #fff;
     color: #f7f7f7;
     text-decoration: none;
@@ -81,20 +81,20 @@
     border: 2px solid;
 }
 
-.remember-forgot label {
+.login-container .remember-forgot label {
     color: #000;
 }
 
-.remember-forgot a {
+.login-container .remember-forgot a {
     color: #000;
     text-decoration: none;
 }
 
-.remember-forgot a:hover {
+.login-container .remember-forgot a:hover {
     text-decoration: underline;
 }
 
-.wrapper .btn {
+.login-container .wrapper .btn {
     width: 100%;
     height: 45px;
     background: #F8492D;
@@ -103,22 +103,22 @@
     border-radius: 40px;
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #fff;
     font-weight: 600;
 }
 
-.wrapper .register-link {
+.login-container .wrapper .register-link {
     font-size: 14.5px;
     text-align: center;
     margin-top: 20px;
 }
 
-.register-link p a {
+.login-container .register-link p a {
     color: #000;
     text-decoration: none;
     font-weight: 600;
 }
 
-.register-link p a:hover {
+.login-container .register-link p a:hover {
     text-decoration: underline;
 }

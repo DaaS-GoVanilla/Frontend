@@ -5,7 +5,7 @@ function AddClient() {
     return (
         <div class='add-details'>
             <div class="top">
-                <div class="Main-text">
+                <div class="main-text">
                     <h1>Add</h1>
                 </div>
                 <div class="user-image">

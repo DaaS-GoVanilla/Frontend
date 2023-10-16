@@ -5,7 +5,7 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="top">
-                <div className="Main-text">
+                <div className="main-text">
                     <h1>Dashboard</h1>
                 </div>
                 <div className="user-image">
