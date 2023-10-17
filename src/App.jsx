@@ -1,11 +1,11 @@
 import './App.css'
-import AddClinet from './pages/AddClient'
+import Login from './pages/Login'
 
 function App() {
 
   return (
     <>
-      <AddClinet />
+      <Login />
     </>
   )
 }
