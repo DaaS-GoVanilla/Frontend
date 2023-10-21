@@ -1,11 +1,11 @@
 import './App.css'
-import AddClient from './pages/AddClient'
+import EditClient from './pages/EditClient'
 
 function App() {
 
   return (
     <>
-      <AddClient />
+      <EditClient />
     </>
   )
 }
