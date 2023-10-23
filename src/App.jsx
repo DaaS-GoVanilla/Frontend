@@ -1,11 +1,18 @@
+import { Routes, Route } from "react-router-dom"
 import './App.css'
-import EditClient from './pages/EditClient'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import AddClient from "./pages/EditClient"
 
 function App() {
 
   return (
     <>
-      <EditClient />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/add" element={<AddClient />} />
+      </Routes>
     </>
   )
 }
