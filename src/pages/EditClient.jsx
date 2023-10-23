@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './addclient.css';
+import { useNavigate } from 'react-router-dom';
 
 function EditClient({ initialValues }) {
     const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ function EditClient({ initialValues }) {
         apiKey: '',
         calendarLink: ''
     });
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -111,7 +114,7 @@ function EditClient({ initialValues }) {
                                 />
                             </div>
                         </div>
-                        <button type="submit" className="btn">Cancel</button>
+                        <button onClick={() => { navigate('/dashboard') }} className="btn">Cancel</button>
                         <button type="submit" className="black-btn">Add</button>
                     </form>
                 </div>
