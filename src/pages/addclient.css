@@ -29,6 +29,7 @@
 .add-details input {
     background-color: #fff;
     border: none;
+    color: #000;
 }
 
 .add-details .input-box-first {

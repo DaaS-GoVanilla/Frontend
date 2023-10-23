@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import './App.css'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
-import AddClient from "./pages/EditClient"
+import AddClient from "./pages/AddClient"
 
 function App() {
 

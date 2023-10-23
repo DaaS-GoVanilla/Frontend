@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './addclient.css';
 
-function AddClient({ initialValues }) {
+function EditClient({ initialValues }) {
     const [formData, setFormData] = useState({
         companyName: '',
         locationId: '',
@@ -120,4 +120,4 @@ function AddClient({ initialValues }) {
     );
 }
 
-export default AddClient;
+export default EditClient;

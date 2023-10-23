@@ -4,10 +4,10 @@ import './addclient.css';
 
 function AddClient() {
     const [formData, setFormData] = useState({
-        companyName: '',
-        locationId: '',
-        apiKey: '',
-        calendarLink: ''
+        ClientCompanyName: '',
+        LocationID: '',
+        APIKey: '',
+        CalendarLink: ''
     });
 
     const handleInputChange = (e) => {
@@ -20,18 +20,18 @@ function AddClient() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
+        console.log(formData)
         try {
-            const response = await axios.post('/your-backend-endpoint', formData, {
+            const response = await axios.post('http://localhost:8000/api/create', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
             if (response.status === 200) {
-                // Handle a successful response (e.g., show a success message)
+                console.log(response)
             } else {
-                // Handle an error response (e.g., show an error message)
+                console.log(response)
             }
         } catch (error) {
             // Handle any network or other errors
@@ -55,8 +55,8 @@ function AddClient() {
                             <p>Client Company Name</p>
                             <input
                                 type="text"
-                                name="companyName"
-                                value={formData.companyName}
+                                name="ClientCompanyName"
+                                value={formData.ClientCompanyName}
                                 onChange={handleInputChange}
                                 placeholder=""
                                 required
@@ -67,8 +67,8 @@ function AddClient() {
                                 <p>Location ID</p>
                                 <input
                                     type="text"
-                                    name="locationId"
-                                    value={formData.locationId}
+                                    name="LocationID"
+                                    value={formData.LocationID}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required
@@ -78,8 +78,8 @@ function AddClient() {
                                 <p>API Key</p>
                                 <input
                                     type="text"
-                                    name="apiKey"
-                                    value={formData.apiKey}
+                                    name="APIKey"
+                                    value={formData.APIKey}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required
@@ -92,8 +92,8 @@ function AddClient() {
                                 <p>Calendar Link</p>
                                 <input
                                     type="text"
-                                    name="calendarLink"
-                                    value={formData.calendarLink}
+                                    name="CalendarLink"
+                                    value={formData.CalendarLink}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required
