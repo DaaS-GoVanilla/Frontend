@@ -1,40 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
-    // const [clients, setClients] = useState([]);
+    const [clients, setClients] = useState([]);
+    const navigate = useNavigate()
 
-    const clients = [
-        {
-            companyName: "Timmy Ostrom_Fairway Independent Mortgage",
-            locationID: "mqafKFlMAGC75HeD7aDm",
-            api: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-            calendarLink: "https://api.leadconnectorhq.com/widget/bookings/loan-consultation-30-minute-call-timmy-ostrom",
-            specialNotes: "Assign Lead to Timmy",
-            liveTransferForm: "https://api.leadconnectorhq.com/widget/form/m1pEBt6J1FlM4I0JfeQ1",
-            apptBookedForm: "https://api.leadconnectorhq.com/widget/form/a78x0hbEPoRGVyEUOdfV"
-        },
-        {
-            companyName: "Joel Martin_Integrity Home Funding",
-            locationID: "TH6woF4OR5VBIn8agpXL",
-            api: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ0",
-            calendarLink: "https://api.leadconnectorhq.com/widget/bookings/loan-consultation-30-minute-call-joel-martin",
-            specialNotes: "Assign Lead to Joel",
-            liveTransferForm: "https://api.leadconnectorhq.com/widget/form/tXm92UTicQv2yA0piOnv",
-            apptBookedForm: "https://api.leadconnectorhq.com/widget/form/oMX8hGpMqrdtnn2VWY0M"
-        },
-    ]
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/getallclient')
+            .then(response => {
+                console.log(response.data)
+                setClients(response.data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching client data:', error);
+            });
+    }, []);
 
-    // useEffect(() => {
-    //     axios.get('/api/clients') 
-    //         .then(response => {
-    //             setClients(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching client data:', error);
-    //         });
-    // }, []); 
+    function handleAdd(e) {
+        e.preventDefault();
+        navigate('/addclient')
+    }
 
     return (
         <div className="dashboard">
@@ -49,18 +36,18 @@ function Dashboard() {
             <div className="wrapper">
                 <div className="main">
                     <div className="input-box">
-                        <input type="text" placeholder="Search" required />
+                        <input type="text" placeholder="Search" />
                         <i className='bx bx-search'></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" placeholder="All" required />
+                        <input type="text" placeholder="All" readOnly />
                         <i className='bx bx-chevron-down'></i>
                     </div>
-                    <button type="submit" className="btn"><i className='bx bx-plus'></i>Add</button>
+                    <button className="btn" onClick={handleAdd}><i className='bx bx-plus'></i>Add</button>
                 </div>
                 {clients.map(client => (
-                    <div key={client.api} className="second-main">
-                        <p className="current-client">Client Company Name | {client.companyName}</p>
+                    <div key={client['API key']} className="second-main">
+                        <p className="current-client">Client Company Name | {client['Client Company Name']}</p>
                         <div className="green"><img src='/src/assets/green.png' alt='' /></div>
                         <div className="dot"><i className='bx bx-dots-vertical-rounded'></i></div>
                     </div>
