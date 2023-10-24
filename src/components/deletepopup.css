@@ -22,6 +22,14 @@
     /* height: 320px; */
     width: 520px;
     padding: 2rem;
+    position: relative;
+}
+
+.pop-up .wrapper i {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    font-size: 1.5rem;
 }
 
 .pop-up .wrapper h1 {

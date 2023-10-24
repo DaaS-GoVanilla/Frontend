@@ -49,7 +49,7 @@ function Dashboard() {
 
     return (
         <>
-            {popup.enable ? <DeletePopup /> : <></>}
+            {popup.enable ? <DeletePopup handler={handlePopup} /> : <></>}
             <div className={"dashboard" + (popup.enable ? " enable" : "")}>
                 <div className="top">
                     <div className="main-text">
@@ -84,7 +84,7 @@ function Dashboard() {
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>
                                     <button className='pause' onClick={() => handlePopup(true, 'pause', client['API key'])}>Pause</button>
-                                    <button className='delete'>Delete</button>
+                                    <button className='delete' onClick={() => handlePopup(true, 'delete', client['API key'])}>Delete</button>
                                 </div>
                             )}
                         </div>
