@@ -1,17 +1,27 @@
+.pop-up {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 999;
+}
+
 .pop-up .main {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    /* display: grid; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* min-height: 100vh; */
+    border-radius: 20%;
     background: #f7f7f7;
     color: black;
 }
 
 .pop-up .wrapper {
     background-color: #fff;
-    height: 320px;
+    /* height: 320px; */
     width: 520px;
-    padding: 20px 20px 20px 50px;
+    padding: 2rem;
 }
 
 .pop-up .wrapper h1 {
@@ -28,10 +38,12 @@
 .pop-up .wrapper input {
     background-color: #f7f7f7;
     border: none;
+    outline: none;
+    color: black;
     height: 30px;
-    width: 94%;
+    width: 100%;
     border-radius: 5px;
-    padding-left: 25px;
+    padding: 15px 25px;
     margin-bottom: 20px;
 }
 
@@ -40,6 +52,6 @@
     color: #fff;
     border: none;
     height: 30px;
-    width: 94%;
+    width: 100%;
     border-radius: 5px;
 }

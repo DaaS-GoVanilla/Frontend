@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './addclient.css';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-function EditClient({ initialValues }) {
+function EditClient({ }) {
     const [formData, setFormData] = useState({
-        companyName: '',
-        locationId: '',
-        apiKey: '',
-        calendarLink: ''
+        ClientCompanyName: '',
+        LocationID: '',
+        APIKey: '',
+        CalendarLink: ''
     });
+
+    const { state } = useLocation()
 
     const navigate = useNavigate();
 
@@ -22,12 +25,12 @@ function EditClient({ initialValues }) {
     };
 
     useEffect(() => {
-        if (initialValues) {
+        if (state) {
             setFormData({
-                companyName: initialValues.companyName || '',
-                locationId: initialValues.locationId || '',
-                apiKey: initialValues.apiKey || '',
-                calendarLink: initialValues.calendarLink || ''
+                ClientCompanyName: state['Client Company Name'],
+                LocationID: state['Location ID'],
+                APIKey: state['API key'],
+                CalendarLink: state['Calendar Link']
             });
         }
     }, []);
@@ -56,7 +59,7 @@ function EditClient({ initialValues }) {
         <div className='add-details'>
             <div className="top">
                 <div className="main-text">
-                    <h1>EDIT</h1>
+                    <h1>Add</h1>
                 </div>
                 <div className="user-image">
                     <img src="/src/assets/userimage.png" alt="" />
@@ -69,8 +72,8 @@ function EditClient({ initialValues }) {
                             <p>Client Company Name</p>
                             <input
                                 type="text"
-                                name="companyName"
-                                value={formData.companyName}
+                                name="ClientCompanyName"
+                                value={formData.ClientCompanyName}
                                 onChange={handleInputChange}
                                 placeholder=""
                                 required
@@ -81,8 +84,8 @@ function EditClient({ initialValues }) {
                                 <p>Location ID</p>
                                 <input
                                     type="text"
-                                    name="locationId"
-                                    value={formData.locationId}
+                                    name="LocationID"
+                                    value={formData.LocationID}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required
@@ -92,8 +95,8 @@ function EditClient({ initialValues }) {
                                 <p>API Key</p>
                                 <input
                                     type="text"
-                                    name="apiKey"
-                                    value={formData.apiKey}
+                                    name="APIKey"
+                                    value={formData.APIKey}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required
@@ -106,8 +109,8 @@ function EditClient({ initialValues }) {
                                 <p>Calendar Link</p>
                                 <input
                                     type="text"
-                                    name="calendarLink"
-                                    value={formData.calendarLink}
+                                    name="CalendarLink"
+                                    value={formData.CalendarLink}
                                     onChange={handleInputChange}
                                     placeholder=""
                                     required

@@ -3,6 +3,7 @@ import './App.css'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import AddClient from "./pages/AddClient"
+import EditClient from "./pages/EditClient"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/addclient" element={<AddClient />} />
+        <Route path="/editclient" element={<EditClient />} />
       </Routes>
     </>
   )
