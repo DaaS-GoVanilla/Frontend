@@ -23,20 +23,21 @@
     padding: 30px 40px;
 }
 
-.dashboard .main {
+/* .dashboard .main {
     display: flex;
-}
+} */
 
 .dashboard .wrapper .input-box {
     position: relative;
-    width: 100%;
+    /* width: 15vw; */
     height: 50px;
-
+    display: inline-block;
     margin: 30px 0;
+    margin-right: 2rem;
 }
 
 .dashboard .input-box input {
-    width: 60%;
+    width: 100%;
     height: 30%;
     background: #fff;
     border: none;
@@ -52,14 +53,14 @@
 .dashboard .wrapper .input-box i {
     position: absolute;
     color: #000000;
-    right: 140px;
+    right: 20px;
     top: 40%;
     transform: translateY(-50%);
     font-size: 20px;
 }
 
 .dashboard .wrapper .btn {
-    width: 250px;
+    width: 10vw;
     height: 30px;
     border-radius: 5px;
     margin-top: 35px;
@@ -68,6 +69,7 @@
     border: none;
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
+    float: inline-end;
 }
 
 .dashboard .wrapper .btn i {
@@ -91,22 +93,34 @@
 }
 
 .dashboard .second-main {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex; */
+    /* justify-content: space-around; */
     width: auto;
-    height: 40px;
+    /* height: 40px; */
     border-radius: 10px;
     background-color: #fff;
-    padding-top: 10px;
+    padding: 0.5rem 1rem;
     color: #000;
     margin-bottom: 1rem;
+}
+
+.dashboard .second-main .green {
+    display: inline;
+    float: right;
 }
 
 .dashboard .second-main .green img {
     width: 10px;
     height: 10px;
+    margin-right: 1rem;
 }
 
 .dashboard .current-client {
     font-size: 14px;
+    display: inline;
+}
+
+.dashboard .second-main .dot {
+    display: inline;
+    float: right;
 }

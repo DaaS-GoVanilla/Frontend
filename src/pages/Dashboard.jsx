@@ -48,8 +48,8 @@ function Dashboard() {
                 {clients.map(client => (
                     <div key={client['API key']} className="second-main">
                         <p className="current-client">Client Company Name | {client['Client Company Name']}</p>
-                        <div className="green"><img src='/src/assets/green.png' alt='' /></div>
                         <div className="dot"><i className='bx bx-dots-vertical-rounded'></i></div>
+                        <div className="green"><img src='/src/assets/green.png' alt='' /></div>
                     </div>
                 ))}
             </div>
