@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     const [clients, setClients] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -23,6 +24,10 @@ function Dashboard() {
         navigate('/addclient')
     }
 
+    const filteredClients = clients.filter(client =>
+        client['Client Company Name'].toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="dashboard">
             <div className="top">
@@ -36,7 +41,11 @@ function Dashboard() {
             <div className="wrapper">
                 <div className="main">
                     <div className="input-box">
-                        <input type="text" placeholder="Search" />
+                        <input type="text"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                         <i className='bx bx-search'></i>
                     </div>
                     <div className="input-box">
@@ -45,7 +54,7 @@ function Dashboard() {
                     </div>
                     <button className="btn" onClick={handleAdd}><i className='bx bx-plus'></i>Add</button>
                 </div>
-                {clients.map(client => (
+                {filteredClients.map(client => (
                     <div key={client['API key']} className="second-main">
                         <p className="current-client">Client Company Name | {client['Client Company Name']}</p>
                         <div className="dot"><i className='bx bx-dots-vertical-rounded'></i></div>
