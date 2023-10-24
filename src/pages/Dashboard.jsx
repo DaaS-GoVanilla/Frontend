@@ -28,6 +28,15 @@ function Dashboard() {
         client['Client Company Name'].toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const [selectedClient, setSelectedClient] = useState(null);
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+    const handleDotClick = (clientId) => {
+        console.log(clientId)
+        setSelectedClient(clientId);
+        setIsDropdownVisible(!isDropdownVisible);
+    };
+
     return (
         <div className="dashboard">
             <div className="top">
@@ -57,8 +66,15 @@ function Dashboard() {
                 {filteredClients.map(client => (
                     <div key={client['API key']} className="second-main">
                         <p className="current-client">Client Company Name | {client['Client Company Name']}</p>
-                        <div className="dot"><i className='bx bx-dots-vertical-rounded'></i></div>
+                        <div className="dot" onClick={() => handleDotClick(client['API key'])}><i className='bx bx-dots-vertical-rounded'></i></div>
                         <div className="green"><img src='/src/assets/green.png' alt='' /></div>
+                        {isDropdownVisible && selectedClient === client['API key'] && (
+                            <div className="dropdown-menu">
+                                <button>Edit</button>
+                                <button className='pause'>Pause</button>
+                                <button className='delete'>Delete</button>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

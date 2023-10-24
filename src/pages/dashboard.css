@@ -102,6 +102,43 @@
     padding: 0.5rem 1rem;
     color: #000;
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.dashboard .dropdown-menu {
+    position: absolute;
+    right: 0;
+    width: 10vw;
+    background: white;
+    z-index: 9;
+    padding: 0.5rem 0;
+    border-radius: 10px;
+    box-shadow: 5px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    ;
+}
+
+.dashboard .dropdown-menu button {
+    width: calc(100% - 2rem);
+    border: none;
+    background: none;
+    color: black;
+    /* margin: 0; */
+    text-align: start;
+    margin: 0 1rem;
+}
+
+.dashboard .dropdown-menu .pause {
+    color: #F8492D;
+}
+
+.dashboard .dropdown-menu .delete {
+    background-color: #F8492D;
+    color: white;
+    margin: 0 0 0 0.5rem;
+    padding: 0 0.5rem;
+    width: calc(100% - 1rem);
+    border-radius: 3px;
 }
 
 .dashboard .second-main .green {
