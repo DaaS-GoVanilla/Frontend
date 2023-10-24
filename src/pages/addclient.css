@@ -1,8 +1,8 @@
 .add-details {
     display: grid;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    /* align-items: center; */
+    height: 100vh;
     background: #fff;
 }
 
@@ -15,40 +15,46 @@
 .add-details .wrapper {
     position: relative;
     margin-top: 30px;
-    margin-bottom: 30px;
-    width: 800px;
-    height: 480px;
+    margin-bottom: 10vh;
+    width: 80vw;
+    /* height: 480px; */
     background: #f7f7f7;
     color: #000;
     border-radius: 10px;
     padding: 30px 40px;
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
 
-.add-details input {
-    background-color: #fff;
-    border: none;
-    color: #000;
+.add-details p {
+    margin-left: 10px;
 }
 
 .add-details .input-box-first {
     margin-top: 30px;
     margin-bottom: 30px;
+}
 
-
+.add-details input {
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #000000;
+    padding: 5px 10px;
 }
 
 .add-details .input-box-first input {
-    width: 200px
+    width: 350px
 }
 
 .add-details .input-box-second input {
-    width: 200px
+    width: 350px
 }
 
 .add-details .input-box-third input {
-    width: 200px
+    width: 350px
 }
 
 .add-details .input-box-third {
