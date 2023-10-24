@@ -7,6 +7,7 @@ import DeletePopup from '../components/DeletePopup'
 function Dashboard() {
     const [clients, setClients] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [popup, setPopup] = useState({ enable: false, type: null, id: null })
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -25,6 +26,14 @@ function Dashboard() {
         navigate('/addclient')
     }
 
+    function handlePopup(enable, type, id) {
+        setPopup({
+            enable: enable,
+            type: type,
+            id: id
+        })
+    }
+
     const filteredClients = clients.filter(client =>
         client['Client Company Name'].toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -40,8 +49,8 @@ function Dashboard() {
 
     return (
         <>
-            {/* <DeletePopup /> */}
-            <div className="dashboard">
+            {popup.enable ? <DeletePopup /> : <></>}
+            <div className={"dashboard" + (popup.enable ? " enable" : "")}>
                 <div className="top">
                     <div className="main-text">
                         <h1>Dashboard</h1>
@@ -74,7 +83,7 @@ function Dashboard() {
                             {isDropdownVisible && selectedClient === client['API key'] && (
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>
-                                    <button className='pause'>Pause</button>
+                                    <button className='pause' onClick={() => handlePopup(true, 'pause', client['API key'])}>Pause</button>
                                     <button className='delete'>Delete</button>
                                 </div>
                             )}

@@ -4,7 +4,10 @@
     /* align-items: center; */
     min-height: 100vh;
     background: #fff;
-    /* opacity: 0.2; */
+}
+
+.enable {
+    opacity: 0.2;
 }
 
 .dashboard .top {
