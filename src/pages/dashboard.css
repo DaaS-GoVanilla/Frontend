@@ -74,13 +74,11 @@
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
     float: inline-end;
+    cursor: pointer;
 }
 
 .dashboard .wrapper .btn i {
-
     margin-right: 15px;
-
-
 }
 
 .dashboard .user-image img {
@@ -164,4 +162,5 @@
 .dashboard .second-main .dot {
     display: inline;
     float: right;
+    cursor: pointer;
 }

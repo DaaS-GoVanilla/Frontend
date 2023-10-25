@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './addclient.css';
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditClient({ }) {
     const [formData, setFormData] = useState({
@@ -39,27 +40,57 @@ function EditClient({ }) {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/your-backend-endpoint', formData, {
+            const response = await axios.put('http://localhost:8000/api/update/' + formData.APIKey, formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
             if (response.status === 200) {
-                // Handle a successful response (e.g., show a success message)
+                navigate('/dashboard', { state: 'updated' })
             } else {
-                // Handle an error response (e.g., show an error message)
+                toast.error('Something went wrong', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             }
         } catch (error) {
-            // Handle any network or other errors
+            toast.error('Something went wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 
     return (
         <div className='add-details'>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className="top">
                 <div className="main-text">
-                    <h1>Add</h1>
+                    <h1>EDIT</h1>
                 </div>
                 <div className="user-image">
                     <img src="/src/assets/userimage.png" alt="" />
@@ -118,7 +149,7 @@ function EditClient({ }) {
                             </div>
                         </div>
                         <button onClick={() => { navigate('/dashboard') }} className="btn">Cancel</button>
-                        <button type="submit" className="black-btn">Add</button>
+                        <button type="submit" className="black-btn">Update</button>
                     </form>
                 </div>
             </div>

@@ -2,10 +2,14 @@ import React from 'react'
 import axios from 'axios';
 import './deletepopup.css'
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 function DeletePopup(props) {
 
     const [input, setInput] = useState('')
+    const navigate = useNavigate()
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -14,30 +18,73 @@ function DeletePopup(props) {
             const response = await axios.delete('http://localhost:8000/api/delete/' + props.data.id);
 
             if (response.status === 200) {
-                console.log(response)
+                toast.warn('Client deleted successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                props.handler(false, 'delete', props.data.id)
             } else {
-                console.log(response)
+                toast.error('Something went wrong', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             }
         } catch (error) {
-            // Handle any network or other errors
             console.log(error)
+            toast.error('Something went wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 
     return (
-        <div className='pop-up'>
-            <div className="main">
-                <div className="wrapper">
-                    <h1>Delete this Client?</h1>
-                    <i className='bx bx-x' onClick={() => { props.handler(false, null, null) }}></i>
-                    <p><strong>Warning: </strong>This is a irreversible process ! Type down the following word to continue</p>
+        <>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            <div className='pop-up'>
+                <div className="main">
+                    <div className="wrapper">
+                        <h1>Delete this Client?</h1>
+                        <i className='bx bx-x' onClick={() => { props.handler(false, null, null) }}></i>
+                        <p><strong>Warning: </strong>This is a irreversible process ! Type down the following word to continue</p>
 
-                    <input type="text" onChange={(e) => { setInput(e.target.value) }} placeholder="Type delete" required />
-                    <br />
-                    <button className="btn" onClick={submitHandler}>Delete</button>
+                        <input type="text" onChange={(e) => { setInput(e.target.value) }} placeholder="Type delete" required />
+                        <br />
+                        <button className="btn" onClick={submitHandler}>Delete</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
 

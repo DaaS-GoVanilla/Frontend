@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './addclient.css';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddClient() {
     const [formData, setFormData] = useState({
@@ -32,17 +34,47 @@ function AddClient() {
             });
 
             if (response.status === 200) {
-                console.log(response)
+                navigate('/dashboard', { state: 'added' })
             } else {
-                console.log(response)
+                toast.error('Something went wrong', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             }
         } catch (error) {
-            // Handle any network or other errors
+            toast.error('Something went wrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 
     return (
         <div className='add-details'>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className="top">
                 <div className="main-text">
                     <h1>Add</h1>

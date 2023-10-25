@@ -3,12 +3,16 @@ import './dashboard.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import DeletePopup from '../components/DeletePopup'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from 'react-router-dom';
 
 function Dashboard() {
     const [clients, setClients] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [popup, setPopup] = useState({ enable: false, type: null, id: null })
     const navigate = useNavigate()
+    const { state } = useLocation()
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/getallclient')
@@ -19,19 +23,55 @@ function Dashboard() {
             .catch(error => {
                 console.error('Error fetching client data:', error);
             });
+        if (state) {
+            if (state === 'added') {
+                toast.success('Client added successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else if (state === 'updated') {
+                toast.success('Client updated successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+        }
+
     }, []);
 
-    function handleAdd(e) {
-        e.preventDefault();
-        navigate('/addclient')
-    }
-
     function handlePopup(enable, type, id) {
-        setPopup({
-            enable: enable,
-            type: type,
-            id: id
-        })
+        if (!enable && type === 'delete') {
+            var f;
+            var found = clients.some(function (record, index) { f = index; return record['API key'] === id; });
+            if (found) {
+                clients.splice(f, 1);
+                setClients(clients)
+                setPopup({
+                    enable: false,
+                    type: null,
+                    id: null
+                })
+            }
+        }
+        else {
+            setPopup({
+                enable: enable,
+                type: type,
+                id: id
+            })
+        }
     }
 
     const filteredClients = clients.filter(client =>
@@ -51,6 +91,18 @@ function Dashboard() {
         <>
             {popup.enable ? <DeletePopup handler={handlePopup} data={popup} /> : <></>}
             <div className={"dashboard" + (popup.enable ? " enable" : "")}>
+                <ToastContainer
+                    position="bottom-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
                 <div className="top">
                     <div className="main-text">
                         <h1>Dashboard</h1>
@@ -73,7 +125,7 @@ function Dashboard() {
                             <input type="text" placeholder="All" readOnly />
                             <i className='bx bx-chevron-down'></i>
                         </div>
-                        <button className="btn" onClick={handleAdd}><i className='bx bx-plus'></i>Add</button>
+                        <button className="btn" onClick={() => { navigate('/addclient') }}><i className='bx bx-plus'></i>Add</button>
                     </div>
                     {filteredClients.map(client => (
                         <div key={client['API key']} className="second-main">
