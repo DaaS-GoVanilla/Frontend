@@ -49,7 +49,7 @@ function Dashboard() {
 
     return (
         <>
-            {popup.enable ? <DeletePopup handler={handlePopup} /> : <></>}
+            {popup.enable ? <DeletePopup handler={handlePopup} data={popup} /> : <></>}
             <div className={"dashboard" + (popup.enable ? " enable" : "")}>
                 <div className="top">
                     <div className="main-text">
