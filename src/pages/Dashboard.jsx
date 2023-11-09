@@ -6,6 +6,8 @@ import DeletePopup from '../components/DeletePopup'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
+import green from '../assets/green.png'
+import user from '../assets/userimage.png'
 
 function Dashboard() {
     const [clients, setClients] = useState([]);
@@ -108,7 +110,7 @@ function Dashboard() {
                         <h1>Dashboard</h1>
                     </div>
                     <div className="user-image">
-                        <img src="/src/assets/userimage.png" alt="" />
+                        <img src={user} alt="" />
                     </div>
                 </div>
                 <div className="wrapper">
@@ -131,7 +133,7 @@ function Dashboard() {
                         <div key={client['APIKey']} className="second-main">
                             <p className="current-client">Client Company Name | {client['ClientCompanyName']}</p>
                             <div className="dot" onClick={() => handleDotClick(client['APIKey'])}><i className='bx bx-dots-vertical-rounded'></i></div>
-                            <div className="green"><img src='/src/assets/green.png' alt='' /></div>
+                            <div className="green"><img src={green} alt='' /></div>
                             {isDropdownVisible && selectedClient === client['APIKey'] && (
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>

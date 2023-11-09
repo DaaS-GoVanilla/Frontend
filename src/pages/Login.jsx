@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import logo from '../assets/logo.png'
 import axios from 'axios';
 
 function Login() {
@@ -31,7 +32,7 @@ function Login() {
             <div className="login">
                 <div className="top">
                     <div className="logo">
-                        <img src="/src/assets/logo.png" alt="" />
+                        <img src={logo} alt="" />
                     </div>
                     <div className="name">
                         <p>loansondemand.io</p>

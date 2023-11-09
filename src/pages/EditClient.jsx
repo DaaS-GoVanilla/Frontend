@@ -4,6 +4,8 @@ import './addclient.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import user from '../assets/userimage.png'
+
 
 function EditClient({ }) {
     const [formData, setFormData] = useState({
@@ -93,7 +95,7 @@ function EditClient({ }) {
                     <h1>EDIT</h1>
                 </div>
                 <div className="user-image">
-                    <img src="/src/assets/userimage.png" alt="" />
+                    <img src={user} alt="" />
                 </div>
             </div>
             <div className="wrapper">
