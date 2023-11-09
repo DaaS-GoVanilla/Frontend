@@ -27,7 +27,7 @@ function AddClient() {
         e.preventDefault();
         console.log(formData)
         try {
-            const response = await axios.post('http://localhost:8000/api/create', formData, {
+            const response = await axios.post('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }

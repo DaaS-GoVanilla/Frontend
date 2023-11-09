@@ -15,7 +15,7 @@ function DeletePopup(props) {
         e.preventDefault();
         console.log(input)
         try {
-            const response = await axios.delete('http://localhost:8000/api/delete/' + props.data.id);
+            const response = await axios.delete('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware?id=' + props.data.id);
 
             if (response.status === 200) {
                 toast.warn('Client deleted successfully!', {

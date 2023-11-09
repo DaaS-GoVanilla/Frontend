@@ -15,10 +15,10 @@ function Dashboard() {
     const { state } = useLocation()
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/getallclient')
+        axios.get('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware')
             .then(response => {
                 console.log(response.data)
-                setClients(response.data.data);
+                setClients(response.data);
             })
             .catch(error => {
                 console.error('Error fetching client data:', error);
@@ -75,7 +75,7 @@ function Dashboard() {
     }
 
     const filteredClients = clients.filter(client =>
-        client['Client Company Name'].toLowerCase().includes(searchTerm.toLowerCase())
+        client['ClientCompanyName'].toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const [selectedClient, setSelectedClient] = useState(null);
@@ -128,15 +128,15 @@ function Dashboard() {
                         <button className="btn" onClick={() => { navigate('/addclient') }}><i className='bx bx-plus'></i>Add</button>
                     </div>
                     {filteredClients.map(client => (
-                        <div key={client['API key']} className="second-main">
-                            <p className="current-client">Client Company Name | {client['Client Company Name']}</p>
-                            <div className="dot" onClick={() => handleDotClick(client['API key'])}><i className='bx bx-dots-vertical-rounded'></i></div>
+                        <div key={client['APIKey']} className="second-main">
+                            <p className="current-client">Client Company Name | {client['ClientCompanyName']}</p>
+                            <div className="dot" onClick={() => handleDotClick(client['APIKey'])}><i className='bx bx-dots-vertical-rounded'></i></div>
                             <div className="green"><img src='/src/assets/green.png' alt='' /></div>
-                            {isDropdownVisible && selectedClient === client['API key'] && (
+                            {isDropdownVisible && selectedClient === client['APIKey'] && (
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>
-                                    <button className='pause' onClick={() => handlePopup(true, 'pause', client['API key'])}>Pause</button>
-                                    <button className='delete' onClick={() => handlePopup(true, 'delete', client['API key'])}>Delete</button>
+                                    <button className='pause' onClick={() => handlePopup(true, 'pause', client['APIKey'])}>Pause</button>
+                                    <button className='delete' onClick={() => handlePopup(true, 'delete', client['APIKey'])}>Delete</button>
                                 </div>
                             )}
                         </div>

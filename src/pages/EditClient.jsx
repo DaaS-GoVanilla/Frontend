@@ -28,10 +28,10 @@ function EditClient({ }) {
     useEffect(() => {
         if (state) {
             setFormData({
-                ClientCompanyName: state['Client Company Name'],
-                LocationID: state['Location ID'],
-                APIKey: state['API key'],
-                CalendarLink: state['Calendar Link']
+                ClientCompanyName: state['ClientCompanyName'],
+                LocationID: state['LocationID'],
+                APIKey: state['APIKey'],
+                CalendarLink: state['CalendarLink']
             });
         }
     }, []);
@@ -40,7 +40,7 @@ function EditClient({ }) {
         e.preventDefault();
 
         try {
-            const response = await axios.put('http://localhost:8000/api/update/' + formData.APIKey, formData, {
+            const response = await axios.put('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware?id=' + formData.APIKey, formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
