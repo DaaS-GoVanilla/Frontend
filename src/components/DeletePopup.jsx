@@ -4,16 +4,17 @@ import './deletepopup.css'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import Loader from './Loader';
 
 function DeletePopup(props) {
 
+    const [loading, setLoading] = useState(false)
     const [input, setInput] = useState('')
-    const navigate = useNavigate()
 
     const submitHandler = async (e) => {
         e.preventDefault();
         console.log(input)
+        setLoading(true)
         try {
             const response = await axios.delete('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware?id=' + props.data.id);
 
@@ -28,6 +29,7 @@ function DeletePopup(props) {
                     progress: undefined,
                     theme: "light",
                 });
+                setLoading(false)
                 props.handler(false, 'delete', props.data.id)
             } else {
                 toast.error('Something went wrong', {
@@ -70,19 +72,21 @@ function DeletePopup(props) {
                 pauseOnHover
                 theme="light"
             />
-            <div className='pop-up'>
-                <div className="main">
-                    <div className="wrapper">
-                        <h1>Delete this Client?</h1>
-                        <i className='bx bx-x' onClick={() => { props.handler(false, null, null) }}></i>
-                        <p><strong>Warning: </strong>This is a irreversible process ! Type down the following word to continue</p>
+            {loading ? <Loader /> :
+                <div className='pop-up'>
+                    <div className="main">
+                        <div className="wrapper">
+                            <h1>Delete this Client?</h1>
+                            <i className='bx bx-x' onClick={() => { props.handler(false, null, null) }}></i>
+                            <p><strong>Warning: </strong>This is a irreversible process ! Type down the following word to continue</p>
 
-                        <input type="text" onChange={(e) => { setInput(e.target.value) }} placeholder="Type delete" required />
-                        <br />
-                        <button className="btn" onClick={submitHandler}>Delete</button>
+                            <input type="text" onChange={(e) => { setInput(e.target.value) }} placeholder="Type delete" required />
+                            <br />
+                            <button className="btn" onClick={submitHandler}>Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </>
 
     )

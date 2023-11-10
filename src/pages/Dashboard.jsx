@@ -8,8 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 import green from '../assets/green.png'
 import user from '../assets/userimage.png'
+import Loader from '../components/Loader';
 
 function Dashboard() {
+    const [loading, setLoading] = useState(true)
     const [clients, setClients] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [popup, setPopup] = useState({ enable: false, type: null, id: null })
@@ -21,6 +23,7 @@ function Dashboard() {
             .then(response => {
                 console.log(response.data)
                 setClients(response.data);
+                setLoading(false)
             })
             .catch(error => {
                 console.error('Error fetching client data:', error);
@@ -56,8 +59,9 @@ function Dashboard() {
     function handlePopup(enable, type, id) {
         if (!enable && type === 'delete') {
             var f;
-            var found = clients.some(function (record, index) { f = index; return record['API key'] === id; });
+            var found = clients.some(function (record, index) { f = index; return record['APIKey'] === id; });
             if (found) {
+                console.log(enable)
                 clients.splice(f, 1);
                 setClients(clients)
                 setPopup({
@@ -129,7 +133,7 @@ function Dashboard() {
                         </div>
                         <button className="btn" onClick={() => { navigate('/addclient') }}><i className='bx bx-plus'></i>Add</button>
                     </div>
-                    {filteredClients.map(client => (
+                    {loading ? <Loader /> : <>                    {filteredClients.map(client => (
                         <div key={client['APIKey']} className="second-main">
                             <p className="current-client">Client Company Name | {client['ClientCompanyName']}</p>
                             <div className="dot" onClick={() => handleDotClick(client['APIKey'])}><i className='bx bx-dots-vertical-rounded'></i></div>
@@ -143,6 +147,8 @@ function Dashboard() {
                             )}
                         </div>
                     ))}
+                    </>
+                    }
                 </div>
             </div>
         </>
