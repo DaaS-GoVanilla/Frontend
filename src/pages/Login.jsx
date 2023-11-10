@@ -7,24 +7,22 @@ import axios from 'axios';
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const history = useHistory();
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/api/login', { username, password });
-            if (response.status === 200) {
-                // Redirect to another page upon successful login
-                // history.push('/dashboard');
-                navigate('/dashboard')
-                console.log(response)
-            } else {
-                alert('Login failed. Please check your credentials.');
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
+        // try {
+        //     const response = await axios.post('http://localhost:8000/api/login', { username, password });
+        //     if (response.status === 200) {
+        //         navigate('/dashboard')
+        //         console.log(response)
+        //     } else {
+        //         alert('Login failed. Please check your credentials.');
+        //     }
+        // } catch (error) {
+        //     console.error('An error occurred:', error);
+        // }
+        navigate('/dashboard')
     };
 
     return (
