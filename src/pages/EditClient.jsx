@@ -14,7 +14,8 @@ function EditClient({ }) {
         ClientCompanyName: '',
         LocationID: '',
         APIKey: '',
-        CalendarLink: ''
+        CalendarLink: '',
+        Active: ''
     });
 
     const { state } = useLocation()

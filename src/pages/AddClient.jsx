@@ -14,7 +14,8 @@ function AddClient() {
         ClientCompanyName: '',
         LocationID: '',
         APIKey: '',
-        CalendarLink: ''
+        CalendarLink: '',
+        Active: 'True'
     });
 
     const navigate = useNavigate();
