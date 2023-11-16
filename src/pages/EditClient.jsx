@@ -32,6 +32,10 @@ function EditClient({ }) {
     };
 
     useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            navigate('/')
+        }
         if (state) {
             setFormData({
                 ClientCompanyName: state['ClientCompanyName'],

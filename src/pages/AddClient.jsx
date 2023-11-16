@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './addclient.css';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +20,14 @@ function AddClient() {
     });
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            navigate('/')
+        }
+    }, [])
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

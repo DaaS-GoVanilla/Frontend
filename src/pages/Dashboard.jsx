@@ -19,6 +19,11 @@ function Dashboard() {
     const { state } = useLocation()
 
     useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            navigate('/')
+            return
+        }
         axios.get('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware')
             .then(response => {
                 console.log(response.data)

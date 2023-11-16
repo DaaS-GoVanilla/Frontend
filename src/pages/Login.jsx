@@ -17,7 +17,7 @@ function Login() {
         try {
             const response = await axios.post('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware/login', { username: username, password: password });
             if (response.status === 200) {
-                // sessionStorage.setItem('token', 'EsM8dh3RYIYwwIEyhuAQbEAh3FKazhaT4Ge3o0Rw6fQ2dgbSizKDSijtuFJ9EIg0');
+                sessionStorage.setItem('token', 'EsM8dh3RYIYwwIEyhuAQbEAh3FKazhaT4Ge3o0Rw6fQ2dgbSizKDSijtuFJ9EIg0');
                 navigate('/dashboard')
                 console.log(response)
             } else {
