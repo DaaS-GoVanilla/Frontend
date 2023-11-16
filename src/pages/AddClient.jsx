@@ -15,6 +15,7 @@ function AddClient() {
         LocationID: '',
         APIKey: '',
         CalendarLink: '',
+        SpecialNotes: '',
         Active: 'True'
     });
 
@@ -139,6 +140,17 @@ function AddClient() {
                                         type="text"
                                         name="CalendarLink"
                                         value={formData.CalendarLink}
+                                        onChange={handleInputChange}
+                                        placeholder=""
+                                        required
+                                    />
+                                </div>
+                                <div className="special-notes">
+                                    <p>Special Notes</p>
+                                    <input
+                                        type="text"
+                                        name="SpecialNotes"
+                                        value={formData.SpecialNotes}
                                         onChange={handleInputChange}
                                         placeholder=""
                                         required

@@ -59,6 +59,7 @@
 
 .add-details .input-box-third {
     margin-bottom: 30px;
+    display: flex;
 
 }
 
@@ -72,6 +73,9 @@
     margin-bottom: 30px;
 }
 
+.add-details .calendar {
+    margin-right: 40px;
+}
 
 .add-details .wrapper .btn {
     position: absolute;

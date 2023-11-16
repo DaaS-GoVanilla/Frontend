@@ -15,6 +15,7 @@ function EditClient({ }) {
         LocationID: '',
         APIKey: '',
         CalendarLink: '',
+        SpecialNotes: '',
         Active: ''
     });
 
@@ -36,7 +37,8 @@ function EditClient({ }) {
                 ClientCompanyName: state['ClientCompanyName'],
                 LocationID: state['LocationID'],
                 APIKey: state['APIKey'],
-                CalendarLink: state['CalendarLink']
+                CalendarLink: state['CalendarLink'],
+                SpecialNotes: state['SpecialNotes']
             });
         }
     }, []);
@@ -150,6 +152,17 @@ function EditClient({ }) {
                                         type="text"
                                         name="CalendarLink"
                                         value={formData.CalendarLink}
+                                        onChange={handleInputChange}
+                                        placeholder=""
+                                        required
+                                    />
+                                </div>
+                                <div className="special-notes">
+                                    <p>Special Notes</p>
+                                    <input
+                                        type="text"
+                                        name="SpecialNotes"
+                                        value={formData.SpecialNotes}
                                         onChange={handleInputChange}
                                         placeholder=""
                                         required
