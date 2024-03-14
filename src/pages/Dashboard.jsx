@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 import green from '../assets/green.png'
+import red from '../assets/red.png'
 import user from '../assets/userimage.png'
 import Loader from '../components/Loader';
 
@@ -62,12 +63,21 @@ function Dashboard() {
     }, []);
 
     function handlePopup(enable, type, id) {
-        if (!enable && type === 'Delete') {
+        if (!enable) {
             var f;
             var found = clients.some(function (record, index) { f = index; return record['APIKey'] === id; });
-            if (found) {
+            if (found && type === 'Delete') {
                 console.log(enable)
                 clients.splice(f, 1);
+                setClients(clients)
+                setPopup({
+                    enable: false,
+                    type: null,
+                    id: null
+                })
+            } else if (found && (type === 'Pause' || type === 'Unpause')) {
+                console.log(enable)
+                clients[f]['Active'] = clients[f]['Active'] === 'True' ? 'False' : 'True'
                 setClients(clients)
                 setPopup({
                     enable: false,
@@ -142,11 +152,11 @@ function Dashboard() {
                         <div key={client['APIKey']} className="second-main">
                             <p className="current-client">Client Company Name | {client['ClientCompanyName']}</p>
                             <div className="dot" onClick={() => handleDotClick(client['APIKey'])}><i className='bx bx-dots-vertical-rounded'></i></div>
-                            <div className="green"><img src={green} alt='' /></div>
+                            <div className="green"><img src={client['Active'] === 'False' ? red : green} alt='' /></div>
                             {isDropdownVisible && selectedClient === client['APIKey'] && (
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>
-                                    <button className='pause' onClick={() => handlePopup(true, 'Pause', client['APIKey'])}>Pause</button>
+                                    <button className='pause' onClick={() => handlePopup(true, client['Active'] === 'False' ? 'Unpause' : 'Pause', client['APIKey'])}>{client['Active'] === 'False' ? <>Unpause</> : <>Pause</>}</button>
                                     <button className='delete' onClick={() => handlePopup(true, 'Delete', client['APIKey'])}>Delete</button>
                                 </div>
                             )}

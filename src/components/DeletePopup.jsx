@@ -25,8 +25,20 @@ function DeletePopup(props) {
                 theme: "light",
             });
             return
-        } else if (props.data.type === 'Pause') {
-            toast.error('This feature is not available now', {
+        } else if (props.data.type === 'Pause' && input !== 'Pause') {
+            toast.error('Type Pause to continue', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return
+        } else if (props.data.type === 'Unpause' && input !== 'Unpause') {
+            toast.error('Type Unpause to continue', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -40,9 +52,8 @@ function DeletePopup(props) {
         }
         setLoading(true)
         try {
-            // const response = await axios.delete('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware?id=' + props.data.id);
-
-            if (response.status === 200) {
+            if (props.data.type === 'Delete') {
+                const response = await axios.delete('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware?id=' + props.data.id);
                 toast.warn('Client deleted successfully!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -55,8 +66,18 @@ function DeletePopup(props) {
                 });
                 setLoading(false)
                 props.handler(false, 'Delete', props.data.id)
-            } else {
-                toast.error('Something went wrong', {
+            }
+            else if (props.data.type === 'Pause' || props.data.type === 'Unpause') {
+                const response = await axios.post('https://us-central1-vanillasoft-to-ghl.cloudfunctions.net/function-1/middleware/pause',
+                    {
+                        APIKey: props.data.id,
+                        action: props.data.type
+                    }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                toast.warn('Client updated successfully!', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -66,7 +87,11 @@ function DeletePopup(props) {
                     progress: undefined,
                     theme: "light",
                 });
+                setLoading(false)
+                props.handler(false, props.data.type, props.data.id)
             }
+
+
         } catch (error) {
             console.log(error)
             toast.error('Something went wrong', {
@@ -106,7 +131,7 @@ function DeletePopup(props) {
 
                             <input type="text" onChange={(e) => { setInput(e.target.value) }} placeholder={"Type " + props.data.type} required />
                             <br />
-                            <button className="btn" onClick={submitHandler}>Delete</button>
+                            <button className="btn" onClick={submitHandler}>{props.data.type}</button>
                         </div>
                     </div>
                 </div>
