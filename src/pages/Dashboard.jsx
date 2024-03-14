@@ -63,7 +63,7 @@ function Dashboard() {
     }, []);
 
     function handlePopup(enable, type, id) {
-        if (!enable) {
+        if (!enable && (type === 'Pause' || type === 'Unpause' || type === 'Delete')) {
             var f;
             var found = clients.some(function (record, index) { f = index; return record['APIKey'] === id; });
             if (found && type === 'Delete') {
