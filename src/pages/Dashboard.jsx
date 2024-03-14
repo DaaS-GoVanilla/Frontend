@@ -62,7 +62,7 @@ function Dashboard() {
     }, []);
 
     function handlePopup(enable, type, id) {
-        if (!enable && type === 'delete') {
+        if (!enable && type === 'Delete') {
             var f;
             var found = clients.some(function (record, index) { f = index; return record['APIKey'] === id; });
             if (found) {
@@ -146,8 +146,8 @@ function Dashboard() {
                             {isDropdownVisible && selectedClient === client['APIKey'] && (
                                 <div className="dropdown-menu">
                                     <button onClick={() => navigate('/editclient', { state: client })}>Edit</button>
-                                    <button className='pause' onClick={() => handlePopup(true, 'pause', client['APIKey'])}>Pause</button>
-                                    <button className='delete' onClick={() => handlePopup(true, 'delete', client['APIKey'])}>Delete</button>
+                                    <button className='pause' onClick={() => handlePopup(true, 'Pause', client['APIKey'])}>Pause</button>
+                                    <button className='delete' onClick={() => handlePopup(true, 'Delete', client['APIKey'])}>Delete</button>
                                 </div>
                             )}
                         </div>
